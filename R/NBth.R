@@ -296,7 +296,7 @@ setMethod(
       
       for (i in seq_len(length(sizefact))) {
         fun <- NBth_scalenll(object[features_remain, i], probenum[features_remain], t(para[1, features_remain]), t(para[2, features_remain]), sizefact_BG[i], threshold)
-        sizefact[i] <- optim(c(sizefact_start[i]), fun, lower = c(lower_sizefact), method = "L-BFGS-B")$par
+        sizefact[i] <- optim(c(sizefact_start[i]), fun, lower = c(lower_sizefact), method = "Nelder-Mead")$par
       }
       
       if (size_scale == "first") {
@@ -311,7 +311,7 @@ setMethod(
       if (!threshold_fix) {
         fun1 <- NBth_thnll(object[features_remain, ], probenum[features_remain], sizefact, sizefact_BG, scale_fac * t(para[1, features_remain]), t(para[2, features_remain]))
         
-        threshold <- optim(c(threshold_start), fun1, lower = c(lower_threshold), method = "L-BFGS-B")$par
+        threshold <- optim(c(threshold_start), fun1, lower = c(lower_threshold), method = "Nelder-Mead")$par
       }
       
       

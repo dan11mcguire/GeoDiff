@@ -492,7 +492,7 @@ fitNBthDE_funct =     function(form, annot,
       
       for (i in seq_len(length(sizefact))) {
         fun <- NBthDE_scalenll(X[i, ], object[features_remain, i], probenum[features_remain], para[seq_len(n_para), features_remain], t(para[n_para + 1, features_remain]), sizefact_BG[i], para[n_para + 2, features_remain], sizescalebythreshold, threshold_mean)
-        sizefact[i] <- optim(c(sizefact[i]), fun, lower = c(0), method = "L-BFGS-B")$par
+        sizefact[i] <- optim(c(sizefact[i]), fun, method = "Nelder-Mead")$par #lower = c(0), 
       }
       
       if (size_scale == "first") {

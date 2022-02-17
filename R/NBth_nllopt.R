@@ -63,7 +63,7 @@ NBth_paraopt <- function(countmat, probenum, sizefact, sizefact0, threshold, sta
     if (is.null(names(probenum))) probenum <- rownames(countmat)
     para <- sapply(rownames(countmat), function(x) {
         fun1 <- NBth_paranll(countmat[x, ], probenum[x], sizefact, sizefact0, threshold)
-        result <- tryCatch(optim(start, fun1, lower = lower, method = "L-BFGS-B")$par, error = function(err) c(NA, NA))
+        result <- tryCatch(optim(start, fun1, lower = lower, method = "Nelder-Mead")$par, error = function(err) c(NA, NA))
     })
     return(para)
 }

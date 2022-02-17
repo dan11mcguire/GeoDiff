@@ -68,7 +68,7 @@ fitNBthmDEfeat <- function(Y, probenum, X, Z, sizefact, sizefact0, preci1, thres
 
             result <- tryCatch(
                 expr = {
-                    optim(rt$theta, covnll, lower = lower, upper = upper, method = "L-BFGS-B")
+                    optim(rt$theta, covnll, lower = lower, upper = upper, method = "Nelder-Mead")
                 },
                 error = function(e) {
                     message(sprintf("`optim` encountered singularity problems. Re-assigning the initial values (%s/5).", iter_conv))
